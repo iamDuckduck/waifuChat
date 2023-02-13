@@ -6,7 +6,7 @@ import os
 
 
 def promptForDrawing1(bot, gender, hair, eye, clothes, trait, name):
-    os.environ["REPLICATE_API_TOKEN"] = "4e43941c916c15479dd0d72421a8c51c5a905bba"
+    os.environ["REPLICATE_API_TOKEN"] = "API Token"
     image = "Please list no more than 6 keywords from our conversation, we will use them for image generator."
 
     while True:
