@@ -7,7 +7,7 @@ All the Installation and setup required for using chatgpt-wrapper. (https://gith
 
 API token for using the API of anything-v3-better-vae. (https://replicate.com/cjwbw/anything-v3-better-vae)
 
-other package listed at the begining of the code (find the code in Main)
+other package imported at the the code.
 
 Credits:
 
