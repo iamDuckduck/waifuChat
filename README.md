@@ -14,3 +14,9 @@ Credits:
 https://github.com/mmabrouk/chatgpt-wrapper
 
 https://replicate.com/cjwbw/anything-v3-better-vae
+
+Issue:
+1. Long processing time to chatgpt and anything-v3-better-vae.
+2. Keyword selection may not include the emotions of waifu.
+3. Poor user interface.
+
