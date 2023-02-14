@@ -5,7 +5,7 @@ from io import BytesIO
 import os
 
 
-def promptForDrawing1(bot, gender, hair, eye, clothes, trait, name):
+def promptForDrawing1(bot, userPrompt, name):
     os.environ["REPLICATE_API_TOKEN"] = "4e43941c916c15479dd0d72421a8c51c5a905bba"
     image = "Please list no more than 6 keywords from our conversation, we will use them for image generator."
 
@@ -15,7 +15,6 @@ def promptForDrawing1(bot, gender, hair, eye, clothes, trait, name):
             break
 
         if user_input == "Image.":
-            print(f"trait:{trait}. gender{gender}.")
             response = bot.ask(image)
             keyword = response
             print("keyword: \n", keyword, "Generating Image......")
@@ -26,7 +25,7 @@ def promptForDrawing1(bot, gender, hair, eye, clothes, trait, name):
             # https://replicate.com/cjwbw/anything-v3-better-vae/versions/09a5805203f4c12da649ec1923bb7729517ca25fcac790e640eaa9ed66573b65#input
             inputs = {
                 # Input prompt
-                'prompt': "masterpiece, best quality, 1person, age friendly " + gender + hair + trait + clothes + eye + keyword,
+                'prompt': "masterpiece, best quality, 1person, age friendly " + userPrompt + keyword,
 
                 # The prompt or prompts not to guide the image generation (what you do
                 # not want to see in the generation). Ignored when not using guidance.
@@ -67,7 +66,7 @@ def promptForDrawing1(bot, gender, hair, eye, clothes, trait, name):
             response = bot.ask(user_input)
             print(name, ": ", response)
 
-def promptForDrawing2(bot, hair, eye, name):
+def promptForDrawing2(bot, name, userPrompt):
     os.environ["REPLICATE_API_TOKEN"] = "4e43941c916c15479dd0d72421a8c51c5a905bba"
     image = "Please list no more than 6 keywords from our conversation, we will use them for image generator."
 
@@ -87,7 +86,7 @@ def promptForDrawing2(bot, hair, eye, name):
             # https://replicate.com/cjwbw/anything-v3-better-vae/versions/09a5805203f4c12da649ec1923bb7729517ca25fcac790e640eaa9ed66573b65#input
             inputs = {
                 # Input prompt
-                'prompt': "masterpiece, best quality, 1girl, age friendly " + hair + eye + keyword,
+                'prompt': "masterpiece, best quality, 1girl, age friendly " + userPrompt,
 
                 # The prompt or prompts not to guide the image generation (what you do
                 # not want to see in the generation). Ignored when not using guidance.
@@ -128,14 +127,15 @@ def promptForDrawing2(bot, hair, eye, name):
             response = bot.ask(user_input)
             print(name, ": ", response)
 
-def previewDrawing(hair, eye):
+def previewDrawing(hair, userPrompt):
+    os.environ["REPLICATE_API_TOKEN"] = "4e43941c916c15479dd0d72421a8c51c5a905bba"
     model = replicate.models.get("cjwbw/anything-v3-better-vae")
     version = model.versions.get("09a5805203f4c12da649ec1923bb7729517ca25fcac790e640eaa9ed66573b65")
 
     # https://replicate.com/cjwbw/anything-v3-better-vae/versions/09a5805203f4c12da649ec1923bb7729517ca25fcac790e640eaa9ed66573b65#input
     inputs = {
         # Input prompt
-        'prompt': "masterpiece, best quality, 1girl, age friendly " + hair + eye,
+        'prompt': "masterpiece, best quality, 1girl, age friendly " + hair + userPrompt,
 
         # The prompt or prompts not to guide the image generation (what you do
         # not want to see in the generation). Ignored when not using guidance.
@@ -172,4 +172,3 @@ def previewDrawing(hair, eye):
     response = requests.get(output[0])
     img = Image.open(BytesIO(response.content))
     img.show()
-    return 0
