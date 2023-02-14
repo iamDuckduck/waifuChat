@@ -20,7 +20,7 @@ Issue:
 2. Keyword selection may not include the emotions of waifu.
 3. Poor user interface.
 
-new function wanted to add:
-1.give waifu voice
-2.display image in better way (display image in just one window
-3.adding new feature for users to preview their waifu
+New function wanted to add:
+1. give waifu voice
+2. display image in better way (display image in just one window
+3. adding new feature for users to preview their waifu
