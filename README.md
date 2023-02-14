@@ -23,4 +23,4 @@ Issue:
 New function wanted to add:
 1. give waifu voice
 2. display image in better way (display image in just one window
-3. adding new feature for users to preview their waifu
+3. adding new feature for users to preview their waifu (done)
